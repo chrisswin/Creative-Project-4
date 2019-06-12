@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  <title>The Blog Monster</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="/images/ordinary.png">
+    </div>
+    <div class="title">
+      <h2>CS 260</h2>
+      <h1>The Blog Monster</h1>
+    </div>
+  </div>
+  <div id="app" class="content">
+      <button @click="defaultClick()">See All</button>
+      <input v-model="selectedUser" placeholder="username">
+      <button @click="getUserPosts(selectedUser)">Search</button>
+      
+    <div v-if="searchView">
+      <div class = "post" v-for="item in items">
+        <h2>{{item.title}}</h2>
+        <h3>{{item.user}}</h3>
+        <p id= "text"> {{item.text}} </p>
+      </div>
+
+    </div>
+
+    <div v-else="searchView">
+        <div class = "post" v-for="item in items">
+          <h2>{{item.title}}</h2>
+          <h3>{{item.user}}</h3>
+          <p id= "text"> {{item.text}} </p>
+        </div>
+  
+    </div>
+  </div>
+  <div class="footer">
+    <a href="/admin.html">Admin</a>
+    <a href="https://github.com/byu-cs-260-spring-2019/lab-4-museum-of-ordinary-objects-chrisswin.git">Github Link</a>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="/script.js"></script>
+</body>
+
+</html>
