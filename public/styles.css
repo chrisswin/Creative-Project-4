@@ -1,0 +1,72 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    background: #fff;
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    padding: 20px 100px 0px 100px;
+    background-color: green;
+    color: black;
+  }
+  text {
+    color: black;
+    display: inline-block;
+    width: 80%;
+    border: 1px solid #000;
+    text-align: center;
+  }
+  .title {
+    margin-top: 10px;
+  }
+  
+  .title h1, .title h2 {
+    margin: 0px;
+  }
+  
+  .title h1 {
+    border-top: 1px solid #000;
+  }
+  
+  /* Footer */
+  .footer {
+    height: 50px;
+    padding: 20px 100px 0px 100px;
+  }
+  
+  .footer a {
+    color: #000;
+  }
+  
+  /* Content */
+  .content {
+    padding: 20px 100px 0px 100px;
+  }
+  
+  
+  
+  
+  /* Masonry on large screens */
+  @media only screen and (min-width: 1024px) {
+    .image-gallery {
+      column-count: 4;
+    }
+  }
+  
+  /* Masonry on medium-sized screens */
+  @media only screen and (max-width: 1023px) and (min-width: 768px) {
+    .image-gallery {
+      column-count: 3;
+    }
+  }
+  
+  /* Masonry on small screens */
+  @media only screen and (max-width: 767px) and (min-width: 540px) {
+    .image-gallery {
+      column-count: 2;
+    }
+  }
