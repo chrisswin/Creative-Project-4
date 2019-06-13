@@ -4,7 +4,7 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css" />
-  <title>Museum of Ordinary Objects</title>
+  <title>The Blog Monster</title>
 </head>
 
 <body>
@@ -14,16 +14,31 @@
     </div>
     <div class="title">
       <h2>CS 260</h2>
-      <h1>Museum of Ordinary Objects</h1>
+      <h1>The Blog Monster</h1>
     </div>
   </div>
   <div id="app" class="content">
-    <section class="image-gallery">
-      <div class="image" v-for="item in items">
+      <button @click="defaultClick()">See All</button>
+      <input v-model="selectedUser" placeholder="username">
+      <button @click="getUserPosts(selectedUser)">Search</button>
+      
+    <div v-if="searchView">
+      <div class = "post" v-for="item in items">
         <h2>{{item.title}}</h2>
-        <img :src="item.path" />
-        <p id="description"> {{ item.description }}</p>
+        <h3>{{item.user}}</h3>
+        <p id= "text"> {{item.text}} </p>
       </div>
+
+    </div>
+
+    <div v-else="searchView">
+        <div class = "post" v-for="item in items">
+          <h2>{{item.title}}</h2>
+          <h3>{{item.user}}</h3>
+          <p id= "text"> {{item.text}} </p>
+        </div>
+  
+    </div>
   </div>
   <div class="footer">
     <a href="/admin.html">Admin</a>
