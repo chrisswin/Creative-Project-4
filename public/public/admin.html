@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Blog Monster</title>
+</head>
+
+<body>
+  <div id="admin" >
+    <!--Add Section-->
+    <h1>The Blog Monster: The Admin Page!</h1>
+    <div>
+      <h2>Add an Item</h2>
+    </div>
+
+    <div class="add">
+      <div>
+        <label>Title:   </label>
+        <input v-model="title" placeholder="Title" style="width:200px;">
+        <p></p>
+        <label>Username:</label>
+        <input v-model="user" placeholder="Username" style="width:200px;">
+        <p></p>
+        <textarea v-model="text" style="width: 400px; min-height: 6em; overflow: scroll;"></textarea>
+        <p></p>
+        <button @click="addNewItem">Add Post</button>
+      </div>
+    </div>
+
+    <div v-if="item">
+      {{ item.title }}
+      {{ item.user }}
+      {{ item.text }}
+
+    </div>
+
+    
+    <!--Delete and Edit Section-->
+    
+    <div>
+      <h2>Edit/Delete an Item</h2>
+    </div>
+
+    <div class="edit">
+      <div class="form">
+        <input v-model="searchTitle" placeholder="Search by Title">
+        <button @click="searchByTitle">Search</button>
+      </div>
+    </div>
+    <hr>
+
+    <div v-if="objectsFound">
+      <div v-for="item in items">
+        <h4> {{ item.title }} </h4>
+        <p>By: <span> {{ item.user }} </span></p>
+        <p> {{ item.text }} </p>
+        <button @click=
+        "newTitle = item.title,
+        newUser = item.user,
+        newText = item.text,
+        newId = item.id,
+        objectsFound = false,
+        editOpen = true"
+        >Edit</button>
+        <hr>
+      </div>
+    </div>
+
+    <div v-if="editOpen">
+        <label>Title:</label>
+      <input v-model="newTitle" style="width:200px;">
+      <p></p>
+      <label>Username:</label>
+      <input v-model="newUser" style="width:200px;">
+      <p></p>
+      <textarea v-model="newText" style="width: 400px; min-height: 6em; overflow: scroll;"></textarea>
+      <p></p>
+      <button @click="deleteItem(newId), editOpen = false">Delete</button>
+      <button @click="editItem(newId) editOpen = false">Update</button>
+    </div>
+
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="/admin.js"></script>
+</body>
+<footer>
+    <a href="">Github Link</a>
+</footer>
+
+</html>
