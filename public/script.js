@@ -2,6 +2,9 @@ var app = new Vue({
   el: '#app',
   data: {
     items: [],
+    selectedUser: '',
+    searchedItems: [],
+    searchView: false,
   },
   methods: {
     async getItems() {
@@ -13,6 +16,24 @@ var app = new Vue({
         console.log(error);
       }
     },
+    async getUserPosts(selectedUser) {
+      try {
+        this.searchView = true;
+        let response = await axios.get("/api/items/:+selectedUser");
+        this.searchedItems = response.data;
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    defaultClick()
+    {
+      this.searchView = false;
+
+    },
+
+
+
   },
   created() {
     this.getItems();
